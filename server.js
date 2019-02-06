@@ -7,8 +7,23 @@ const BART_API_KEY = process.env.BART_API_KEY;
 
 app.set('view engine', 'ejs');
 
+// Index
 app.get('/', (req, res) => {
   axios.get(`http://api.bart.gov/api/etd.aspx?cmd=etd&orig=LAFY&key=${BART_API_KEY}&json=y`)
+    .then((response) => {
+      console.log(response.data.root.station[0])
+      res.render('index', {
+        station: response.data.root.station[0]
+      })
+    })
+    .catch((error) => {
+      res.send(error)
+    })
+});
+
+// Show
+app.get('/:station', (req, res) => {
+  axios.get(`http://api.bart.gov/api/etd.aspx?cmd=etd&orig=${req.params.station}&key=${BART_API_KEY}&json=y`)
     .then((response) => {
       console.log(response.data.root.station[0])
       res.render('index', {
