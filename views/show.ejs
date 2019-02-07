@@ -12,11 +12,15 @@
   <h3>Station: <%= station.name %></h3>
 
   <% for (let i = 0; i < station.etd.length; i++) { %>
-    <h4><%= station.etd[i].destination %></h4>
+    <h4>
+      <span style="background-color: <%=station.etd[i].estimate[0].hexcolor + '88'%>">
+        <%= station.etd[i].destination %>
+      </span>
+    </h4>
     <ul>
       <% for (let j = 0; j < station.etd[i].estimate.length; j++) { %>
         <li>
-          <em style="background-color: <%=station.etd[i].estimate[j].hexcolor%>"><%= station.etd[i].estimate[j].direction%></em>, 
+          <em><%= station.etd[i].estimate[j].direction%></em>, 
           <%= station.etd[i].estimate[j].minutes%> minutes
           </li>
       <% } %>
