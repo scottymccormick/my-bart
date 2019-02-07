@@ -8,7 +8,11 @@
 </head>
 <body>
   <h1>My Bart</h1>
-  <a href="/">Back to Station List</a>
+  <section>
+    <a href="/">Back to Station List</a><br>
+    <a href="/<%=station.abbr%>">Refresh</a>
+  </section>
+  
   <h3>Station: <%= station.name %></h3>
 
   <% for (let i = 0; i < station.etd.length; i++) { %>
