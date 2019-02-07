@@ -24,9 +24,11 @@
     <ul>
       <% for (let j = 0; j < station.etd[i].estimate.length; j++) { %>
         <li>
-          <em><%= station.etd[i].estimate[j].direction%></em>, 
-          <%= station.etd[i].estimate[j].minutes%> minutes
-          </li>
+          <%= station.etd[i].estimate[j].minutes%> 
+            <% if(!isNaN(station.etd[i].estimate[j].minutes)) {  %>
+              min
+            <% } %>
+        </li>
       <% } %>
     </ul>
   <% } %>
