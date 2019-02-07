@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My Bart</title>
+</head>
+<body>
+  <h1>My Bart</h1>
+  <section>
+    <a href="/">Back to Station List</a><br>
+    <a href="/<%=station.abbr%>">Refresh</a>
+  </section>
+  
+  <h3>Station: <%= station.name %></h3>
+
+  <% for (let i = 0; i < station.etd.length; i++) { %>
+    <h4>
+      <span style="background-color: <%=station.etd[i].estimate[0].hexcolor + '88'%>">
+        <%= station.etd[i].destination %>
+      </span>
+    </h4>
+    <ul>
+      <% for (let j = 0; j < station.etd[i].estimate.length; j++) { %>
+        <li>
+          <%= station.etd[i].estimate[j].minutes%> 
+            <% if(!isNaN(station.etd[i].estimate[j].minutes)) {  %>
+              min
+            <% } %>
+        </li>
+      <% } %>
+    </ul>
+  <% } %>
+</body>
+</html>
